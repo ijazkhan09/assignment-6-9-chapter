@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+* {
+box-sizing: border-box;
+text-transform: capitalize !important;
+}
+:root{
+--blue--: #0468aa;
+}
+body {
+background-color: #f1f1f1;
+}
+
+#regForm {
+background-color: #ffffff;
+margin: 100px auto;
+font-family: Raleway;
+padding: 40px;
+width: 50%;
+min-width: 300px;
+border-radius: 15px;
+}
+
+h1 {
+text-align: center;  
+}
+
+input {
+padding: 7px 20px !important;
+width: 100% !important;
+font-size: 17px !important;
+font-family: Raleway !important;
+border: 1px solid #aaaaaa52 !important;
+border-radius: 10px !important;
+margin-top: 10px !important;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+display: none;
+}
+
+button {
+background-color: #0468aa !important;
+color: #ffffff !important;
+border: none !important;
+padding: 5px 25px !important;
+font-size: 17px !important;
+font-family: Raleway !important;
+cursor: pointer !important;
+border-radius: 10px !important;
+margin-top: 16px !important;
+}
+
+button:hover {
+opacity: 0.8;
+}
+
+#prevBtn {
+background-color: #bbbbbb9e;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+height: 10px;
+width: 10px;
+margin: 0 2px;
+background-color: #bbbbbba2;
+border: none;  
+border-radius: 20%;
+display: inline-block;
+opacity: 0.5;
+}
+
+.step.active {
+opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+background-color: #0468aa;
+}
+</style>
+<body>
+
+<form id="regForm">
+<h1 class="text-2xl font-bold">Mark Sheet:</h1>
+<!-- One "tab" for each step in the form: -->
+<div class="tab">Subjects:
+  <p><input placeholder="Enter Your Subject" class="inputs"></p>
+  <p><input placeholder="Enter Your Subject" class="inputs"></p>
+  <p><input placeholder="Enter Your Subject" class="inputs"></p>
+  <p><input placeholder="Enter Your Subject" class="inputs"></p>
+  <p><input placeholder="Enter Your Subject" class="inputs"></p>
+  <p><input placeholder="Enter Your Subject" class="inputs"></p>
+</div>
+<div class="tab">Obtained Marks:
+  <p><input placeholder="" class="inputs"></></p>
+  <p><input placeholder="" class="inputs"></></p>
+  <p><input placeholder="" class="inputs"></></p>
+  <p><input placeholder="" class="inputs"></></p>
+  <p><input placeholder="" class="inputs"></></p>
+  <p><input placeholder="" class="inputs"></></p>
+</div>
+<div class="tab">Total Marks:
+  <p><input placeholder="Enter Your totalMarks Marks" class="inputs"></></p>
+  <p><input placeholder="Enter Your totalMarks Marks" class="inputs"></></p>
+  <p><input placeholder="Enter Your totalMarks Marks" class="inputs"></></p>
+  <p><input placeholder="Enter Your totalMarks Marks" class="inputs"></></p>
+  <p><input placeholder="Enter Your totalMarks Marks" class="inputs"></></p>
+  <p><input placeholder="Enter Your totalMarks Marks" class="inputs"></></p>
+</div>
+<div style="overflow:auto;">
+  <div style="float:right;">
+    <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+    <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+  </div>
+</div>
+<!-- Circles which indicates the steps of the form: -->
+<div style="text-align:center;margin-top:40px;">
+  <span class="step"></span>
+  <span class="step"></span>
+  <span class="step"></span>
+  <span class="step"></span>
+</div>
+</form>
+
+<div class="result fixed top-0 left-0 right-0 bottom-0 bg-slate-100 w-full h-full hidden">
+<div style="transform: translate(-50%,-50%);" class="bg-white rounded-xl shadow-xl w-[500px] max-w-[90%] absolute top-[50%] left-[50%] p-6">
+  <h1 class="text-2xl font-bold text-gray-900 pb-[30px]">Result</h1>
+  <div  class="box flex justify-between items-center gap-6" >
+    <div class="subjectss grid grid-cols-1 gap-3">
+      <div class="text-[14px] font-semibold text-gray-600 popup_input subject"></div>
+      <div class="text-[14px] font-semibold text-gray-600 popup_input subject"></div>
+      <div class="text-[14px] font-semibold text-gray-600 popup_input subject"></div>
+      <div class="text-[14px] font-semibold text-gray-600 popup_input subject"></div>
+      <div class="text-[14px] font-semibold text-gray-600 popup_input subject"></div>
+      <div class="text-[14px] font-semibold text-gray-600 popup_input subject"></div>
+  </div>
+  <div class="total_mark_each_subject grid grid-cols-1 gap-3">
+      <div class="text-[14px] font-semibold text-gray-600 popup_input total_marks"></div>
+      <div class="text-[14px] font-semibold text-gray-600 popup_input total_marks"></div>
+      <div class="text-[14px] font-semibold text-gray-600 popup_input total_marks"></div>
+      <div class="text-[14px] font-semibold text-gray-600 popup_input total_marks"></div>
+      <div class="text-[14px] font-semibold text-gray-600 popup_input total_marks"></div>
+      <div class="text-[14px] font-semibold text-gray-600 popup_input total_marks"></div>
+  </div>
+  <div class="total_obtained_subject grid grid-cols-1 gap-3">
+      <div class="text-[14px] font-semibold text-gray-600 popup_input obtained_marks"></div>
+      <div class="text-[14px] font-semibold text-gray-600 popup_input obtained_marks"></div>
+      <div class="text-[14px] font-semibold text-gray-600 popup_input obtained_marks"></div>
+      <div class="text-[14px] font-semibold text-gray-600 popup_input obtained_marks"></div>
+      <div class="text-[14px] font-semibold text-gray-600 popup_input obtained_marks"></div>
+      <div class="text-[14px] font-semibold text-gray-600 popup_input obtained_marks"></div>
+  </div>
+  <div class="percantages grid grid-cols-1 gap-3">
+      <div class="text-[14px] font-semibold text-gray-600 popup_input subject_1_percantages"></div>
+      <div class="text-[14px] font-semibold text-gray-600 popup_input subject_1_percantages"></div>
+      <div class="text-[14px] font-semibold text-gray-600 popup_input subject_1_percantages"></div>
+      <div class="text-[14px] font-semibold text-gray-600 popup_input subject_1_percantages"></div>
+      <div class="text-[14px] font-semibold text-gray-600 popup_input subject_1_percantages"></div>
+      <div class="text-[14px] font-semibold text-gray-600 popup_input subject_1_percantages"></div>
+  </div>
+</div>
+<div class="result_final flex items-center gap-2 pt-5 px-4 text-center justify-center flex-col">
+  <div class="total_marks_show text-[16px] font-semibold text-gray-900">200</div>
+  <div class="obtains_marks text-[16px] font-semibold text-gray-900">300</div>
+  <div class="percantages_end text-[16px] font-semibold text-gray-900">63%</div>
+</div>
+<div class="button close_btn bg-[var(--blue--)] flex justify-center items-center text-[16px] font-bold cursor-pointer text-white py-[9px] px-[24px] mt-6">Close Now</div>
+</div>
+</div>
+
+
+</body>
+<script src="question05.js"></script>
+</html>
