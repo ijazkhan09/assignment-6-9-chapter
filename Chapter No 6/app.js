@@ -1,17 +1,16 @@
-// Chapter num 06
-// Question Num 01
-var a = 10
-document.write("Number OF A is ", a +"<br />");
-++a;
-document.write("Number OF A is ", a +"<br />");
-a++
-document.write("Number OF A is ", a +"<br />");
---a;
-document.write("Number OF A is ", a +"<br />");
-a--;
-document.write("Number OF A is ", a +"<br />");
+// Question N0 01
+var x = 10
+document.write("Number OF A is ", x +"<br />");
+++x;
+document.write("Number OF A is ", x +"<br />");
+x++
+document.write("Number OF A is ", x +"<br />");
+--x;
+document.write("Number OF A is ", x +"<br />");
+x--;
+document.write("Number OF A is ", x +"<br />");
 
-// Question Num 02
+// Question N0 02
 var a = 2, b = 1;
 var result = --a - --b + ++b + b--;
 document.write("result = ", result + "<br />"); 
@@ -55,27 +54,24 @@ document.write("b = ", b + "<br />");
 // b = 0
 // result = 3
 
-// Question No 03
+// Question N0 03
 var user = prompt("Enter Your Name")
 alert("Hello " + " " + user + " " + " Wellcome")
 
-// Question No 04
+// Question N0 04
 var table_show = document.querySelector("#table_show")
-var button = document.querySelector("#generate_table")
+var button = document.querySelector("#btn")
 button.addEventListener("click", function(){
     ShowTables()
 })
 
 function ShowTables() {
-    var number = document.querySelector("#number").value
-    console.log(number);
-    
+    var number = document.querySelector("#num").value
     if(number === ""){
         number = 5
     }else{
         number = parseInt(number)
     }
-    
     var table = ""
     
     for(var i = 1; i <= 10; i++){
@@ -83,7 +79,5 @@ function ShowTables() {
     }
     table_show.innerHTML = table
 }
-
-// Question No 06
 
 
